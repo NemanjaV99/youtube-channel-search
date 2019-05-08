@@ -1,0 +1,66 @@
+body{
+    background-image: url("../images/background.jpg");
+    background-size: cover;
+    background-position: center;
+    font-family: 'Maven Pro', Arial, sans-serif;
+}
+
+/* wrapper */
+
+#wrapper{
+   display: grid;
+   justify-items: center;
+   align-items: center; 
+   grid-template-columns: 1fr 2fr 2fr 1fr;
+   grid-template-rows: repeat(3, 2fr);
+   grid-template-areas: 
+   ". h-container h-container ."
+   ". main main ."
+   ". . . .";
+   grid-gap: 50px;
+}
+
+/* Head container section */
+
+section.head-container{
+    grid-area: h-container
+
+}
+section.head-container h1{
+    font-size: 2.4em;
+    text-align: center;
+    text-shadow: 2px 2px 2px rgb(0, 0, 0);
+    color: rgb(255,255,255);
+    margin: 0;
+}
+
+/* Main */
+
+main{
+    grid-area: main;
+    width: 40rem;
+    height: 10rem;
+    background-color: rgba(0, 0, 0, 0.850);
+    border-radius: 10px;
+    display: grid;
+    grid-template-rows: 1fr 2fr 1fr;
+    align-items: center;
+    justify-items: center;
+}
+
+main form.search-form{
+    padding: 2rem;
+    grid-row: 2/3;
+}
+main form.search-form input[type="search"]{
+    padding: 0.5rem;
+    width: 25rem;
+    border: none;
+}
+main form.search-form button.search-btn{
+    display: block;
+    margin: 10px auto 0;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+}
