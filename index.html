@@ -5,6 +5,7 @@
         <meta charset="UTF-8">
         <link href="assets/css/style.css" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Maven+Pro:400,700&amp;subset=latin-ext" rel="stylesheet">
+        <script src="assets/js/main.js" type="text/javascript"></script>
     </head>
     <body>
       <div id="wrapper">
@@ -13,10 +14,10 @@
         </section>
 
         <main>
-            <form class="search-form" action="#" method="GET">
-              <input type="search" name="search-info" placeholder=" &#128269; Youtube channel name">
-              <button class="search-btn">Search</button>
-            </form>
+            <section class="search">
+              <input type="search" name="search-info" placeholder=" &#128269; Youtube channel name" id="search-input">
+              <button class="search-btn" onclick="userInput()">Search</button>
+            </section>
         </main>
 
       </div><!-- end wrapper -->
