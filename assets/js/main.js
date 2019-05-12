@@ -1,3 +1,5 @@
+
+/* This function is used to check the user input*/
 function userInput(){
 
     // get user input
@@ -19,6 +21,8 @@ function userInput(){
     }
 }
 
+
+/* This function is used for getting the data from back */
 function fetchData(info){
 
     // create XMLHttpRequest
@@ -43,6 +47,8 @@ function fetchData(info){
     xmlhttp.send();
 }
 
+
+/* Functions below are used for displaying data */
 function displayData(data){
 
     // If there is no error, it means that we got the data
@@ -66,6 +72,14 @@ function displayData(data){
          // append to main element
         document.getElementsByTagName("main")[0].appendChild(resultSection);
 
+        // create the main object (represents the channel);
+        let channel = data.data;
+
+        // call function author(), which displays info about the channel author
+        author(channel);
+
+        // call function entry(), which displays all the entries/videos
+        entry(channel);
 
     }else{
        
@@ -96,7 +110,33 @@ function displayData(data){
         }
 
     }
-    
-    
-    
+      
+}
+
+function author(channel){
+
+    // get the main info 
+    let authorName = channel.author.name
+    let dateJoined = channel.published;
+
+    // create the div for displaying author info
+    let authorInfo = document.createElement("div");
+
+    // append it to the result section
+    document.getElementsByClassName("result")[0].appendChild(authorInfo);
+}
+
+function entry(channel){
+
+    // define the entry
+    let video = channel.entry
+
+    for(i = 0; i < video.length; i++)
+    {
+        // create div to display video/entry
+        let entryInfo = document.createElement("div");
+
+        // append it to the result section
+        document.getElementsByClassName("result")[0].appendChild(entryInfo);
+    }
 }
