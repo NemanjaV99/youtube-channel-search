@@ -32,12 +32,61 @@ function fetchData(info){
 
         if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
 
-            // TODO: display received data
-            console.log(xmlhttp.responseText);
+            let data = JSON.parse(xmlhttp.responseText);
+            
+            displayData(data);
         }
     }
 
     // send the data
     xmlhttp.open("GET",url,true);
     xmlhttp.send();
+}
+
+function displayData(data){
+
+    // If there is no error, it means that we got the data
+    if(data.error === false)
+    {
+        // first remove any existing elements
+        if(document.querySelector("result") != null)
+        {
+            document.getElementsByClassName("result")[0].remove();
+        }
+
+        // create section for displaying received results
+        let resultSection = document.createElement("section");
+        resultSection.setAttribute("class","result");
+
+         // append to main element
+        document.getElementsByTagName("main")[0].appendChild(resultSection);
+
+
+    }else{
+       
+        if(data.errorCode == 2){
+
+            // first remove any existing elements
+            if(document.querySelector("errorText") != null)
+            {
+                document.getElementsByClassName("errorText")[0].remove();
+            }
+
+            // create the error text
+            let errorText = document.createElement("div");
+
+            // add error message 
+            errorText.innerHTML = "Please check again. Name does not match any YT channel";
+
+            // set class for the div element
+            errorText.setAttribute("class","errorText");
+
+            // add the div element at the beginning of the main element
+            document.getElementsByTagName("main")[0].prepend(errorText);
+        }
+
+    }
+    
+    
+    
 }
