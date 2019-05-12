@@ -48,10 +48,15 @@ function displayData(data){
     // If there is no error, it means that we got the data
     if(data.error === false)
     {
-        // first remove any existing elements
-        if(document.querySelector("result") != null)
+        // first remove any existing elements ( div.result )
+        if(document.querySelector(".result") !== null)
         {
             document.getElementsByClassName("result")[0].remove();
+        }
+        // Also remove errors (div.errorText), if there is any
+        if(document.querySelector(".errorText") !== null)
+        {
+            document.getElementsByClassName("errorText")[0].remove();
         }
 
         // create section for displaying received results
@@ -66,10 +71,15 @@ function displayData(data){
        
         if(data.errorCode == 2){
 
-            // first remove any existing elements
-            if(document.querySelector("errorText") != null)
+            // first remove any existing errors, div.errorText
+            if(document.querySelector(".errorText") !== null)
             {
                 document.getElementsByClassName("errorText")[0].remove();
+            }
+            // Also remove results, if there are any
+            if(document.querySelector(".result") !== null)
+            {
+                document.getElementsByClassName("result")[0].remove();
             }
 
             // create the error text
