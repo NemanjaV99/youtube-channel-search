@@ -121,6 +121,9 @@ function author(channel){
 
     // create the div for displaying author info
     let authorInfo = document.createElement("div");
+    authorInfo.setAttribute("class","author-info");
+    authorInfo.innerHTML = "<div class='author-name'>"+ authorName +"</div>";
+    authorInfo.innerHTML += "<div class='date'>"+ dateJoined +"</div>";
 
     // append it to the result section
     document.getElementsByClassName("result")[0].appendChild(authorInfo);
@@ -135,6 +138,30 @@ function entry(channel){
     {
         // create div to display video/entry
         let entryInfo = document.createElement("div");
+        entryInfo.setAttribute("class","entry-info");
+
+        // get the video id
+        let videoID = video.id;
+        videoID = videoID.split(":");
+        videoID = videoID[2];
+
+        // get the video title
+        let videoTitle = video.title;
+
+        // get the publish date
+        let videoPublished = video.published;
+
+        // embed the video
+        let iframe = document.createElement("iframe");
+        iframe.setAttribute("class","video-window");
+        
+        // video link
+        let videoLink = "https://www.youtube.com/embed/" + videoID;
+        
+        // add video link to iframe
+        iframe.setAttribute("src",videoLink);
+        
+
 
         // append it to the result section
         document.getElementsByClassName("result")[0].appendChild(entryInfo);
