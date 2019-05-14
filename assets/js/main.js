@@ -119,11 +119,15 @@ function author(channel){
     let authorName = channel.author.name
     let dateJoined = channel.published;
 
+    // format the date, to get year
+    dateJoined = dateJoined.split("-");
+    yearJoined = dateJoined[0];
+
     // create the div for displaying author info
     let authorInfo = document.createElement("div");
     authorInfo.setAttribute("class","author-info");
     authorInfo.innerHTML = "<div class='author-name'>"+ authorName +"</div>";
-    authorInfo.innerHTML += "<div class='date'>"+ dateJoined +"</div>";
+    authorInfo.innerHTML += "<div class='date'>"+ yearJoined +"</div>";
 
     // append it to the result section
     document.getElementsByClassName("result")[0].appendChild(authorInfo);
@@ -141,15 +145,22 @@ function entry(channel){
         entryInfo.setAttribute("class","entry-info");
 
         // get the video id
-        let videoID = video.id;
+        let videoID = video[i].id;
         videoID = videoID.split(":");
         videoID = videoID[2];
 
-        // get the video title
-        let videoTitle = video.title;
+        // get the video title and add it to the entryInfo section
+        let videoTitle = video[i].title;
+        entryInfo.innerHTML += "<h2 class='video-title'>"+ videoTitle +"</h2>"
 
         // get the publish date
-        let videoPublished = video.published;
+        let videoPublished = video[i].published;
+        videoPublished = videoPublished.split("-");
+
+        // get the year and add it to the entryInfo section
+        yearPublished = videoPublished[0];
+        entryInfo += "<div class='date'>"+ yearPublished +"</div>";
+    
 
         // embed the video
         let iframe = document.createElement("iframe");
@@ -161,9 +172,11 @@ function entry(channel){
         // add video link to iframe
         iframe.setAttribute("src",videoLink);
         
+        // append the iframe to entryInfo
+        entryInfo.appendChild(iframe);
 
-
-        // append it to the result section
+        // append the entryInfo to the result section
         document.getElementsByClassName("result")[0].appendChild(entryInfo);
+        
     }
 }
