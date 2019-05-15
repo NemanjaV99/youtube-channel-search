@@ -151,7 +151,7 @@ function entry(channel){
 
         // get the video title and add it to the entryInfo section
         let videoTitle = video[i].title;
-        entryInfo.innerHTML += "<h2 class='video-title'>"+ videoTitle +"</h2>"
+        entryInfo.innerHTML += "<h2 class='video-title'>"+ videoTitle +"</h2>";
 
         // get the publish date
         let videoPublished = video[i].published;
