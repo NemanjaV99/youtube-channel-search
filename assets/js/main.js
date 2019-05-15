@@ -158,8 +158,8 @@ function entry(channel){
         videoPublished = videoPublished.split("-");
 
         // get the year and add it to the entryInfo section
-        yearPublished = videoPublished[0];
-        entryInfo += "<div class='date'>"+ yearPublished +"</div>";
+        let yearPublished = videoPublished[0];
+        entryInfo.innerHTML += "<div class='date'>"+ yearPublished +"</div>";
     
 
         // embed the video
