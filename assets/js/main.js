@@ -151,15 +151,15 @@ function entry(channel){
 
         // get the video title and add it to the entryInfo section
         let videoTitle = video[i].title;
-        entryInfo.innerHTML += "<h2 class='video-title'>"+ videoTitle +"</h2>"
+        entryInfo.appendChild(document.createTextNode("<h2 class='video-title'>"+ videoTitle +"</h2>"));
 
         // get the publish date
         let videoPublished = video[i].published;
         videoPublished = videoPublished.split("-");
 
         // get the year and add it to the entryInfo section
-        yearPublished = videoPublished[0];
-        entryInfo += "<div class='date'>"+ yearPublished +"</div>";
+        let yearPublished = videoPublished[0];
+        entryInfo.appendChild(document.createTextNode("<div class='date'>"+ yearPublished +"</div>"));
     
 
         // embed the video
