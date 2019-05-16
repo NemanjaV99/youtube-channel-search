@@ -83,8 +83,6 @@ function displayData(data){
 
     }else{
        
-        if(data.errorCode == 2){
-
             // first remove any existing errors, div.errorText
             if(document.querySelector(".errorText") !== null)
             {
@@ -99,15 +97,22 @@ function displayData(data){
             // create the error text
             let errorText = document.createElement("div");
 
-            // add error message 
-            errorText.innerHTML = "Please check again. Name does not match any YT channel";
+            // check what is the value of errorCode, and add error message
+            switch (data.errorCode) {
 
+                case 2:
+                    errorText.innerHTML = "Please check again. Name does not match any YT channel.";
+                    break;
+                case 3:
+                    errorText.innerHTML = "There are no videos available for this YT channel.";
+                    break;
+            }
+            
             // set class for the div element
             errorText.setAttribute("class","errorText");
 
             // add the div element at the beginning of the main element
             document.getElementsByTagName("main")[0].prepend(errorText);
-        }
 
     }
       
@@ -117,6 +122,7 @@ function author(channel){
 
     // get the main info 
     let authorName = channel.author.name
+    let channelUri = channel.author.uri;
     let dateJoined = channel.published;
 
     // format the date, to get year
@@ -126,7 +132,7 @@ function author(channel){
     // create the div for displaying author info
     let authorInfo = document.createElement("div");
     authorInfo.setAttribute("class","author-info");
-    authorInfo.innerHTML = "<div class='author-name'>"+ authorName +"</div>";
+    authorInfo.innerHTML = "<div class='author-name'><a href="+ channelUri +">"+ authorName +"</a></div>";
     authorInfo.innerHTML += "<div class='date'>"+ yearJoined +"</div>";
 
     // append it to the result section
