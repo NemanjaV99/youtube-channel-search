@@ -1,7 +1,7 @@
 body{
-    background-image: url("../images/background.jpg");
-    background-size: cover;
-    background-position: center;
+    background: rgb(41,41,45);
+    height: 100vh;
+    background: linear-gradient(120deg, rgba(41,41,45,1) 0%, rgba(63,63,82,1) 35%, rgba(125,136,138,1) 100%);
     font-family: 'Maven Pro', Arial, sans-serif;
 }
 
@@ -17,7 +17,6 @@ body{
    ". h-container h-container ."
    ". main main ."
    ". . . .";
-   grid-gap: 50px;
 }
 
 /* Head container section */
@@ -40,8 +39,6 @@ main{
     grid-area: main;
     width: 40rem;
     height: 10rem;
-    background-color: rgba(0, 0, 0, 0.850);
-    border-radius: 10px;
     display: grid;
     grid-template-rows: 1fr 2fr 1fr;
     align-items: center;
@@ -51,16 +48,50 @@ main{
 main section.search{
     padding: 2rem;
     grid-row: 2/3;
+    border-radius: 30px;
 }
 main section.search input[type="search"]{
     padding: 0.5rem;
     width: 25rem;
     border: none;
+    border-radius: 7px;
+    box-shadow: 1px 1px 3px rgb(0, 0, 0);
 }
+
+/* Button style */
+
 main section.search button.search-btn{
     display: block;
-    margin: 10px auto 0;
-    padding: 5px 10px;
+    margin: 20px auto 0;
+    padding: 10px 25px;
     border-radius: 5px;
     border: none;
+    background-color: rgb(255,0,0);
+    box-shadow: 1px 1px 3px rgb(0, 0, 0);
 }
+button.search-btn:hover{
+    transform: scale(1.05);
+}
+button.search-btn:active{
+    transform: none;
+}    
+button.search-btn:focus{
+    outline: 0;
+}
+.fa-play{
+    color: rgb(255,255,255);
+    font-size: 1.2em;
+}
+
+/* errorText style */
+
+div.errorText{
+    color: rgb(255,0,0);
+    text-shadow: 1px 1px 2px rgb(0, 0, 0);
+    font-size: 1.1em;
+    margin: 0;
+    text-align: center;
+}
+
+/* result section style */
+
