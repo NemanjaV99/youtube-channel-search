@@ -8,7 +8,7 @@ function userInput(){
 
     if(search == '' || typeof(search) == undefined){
 
-        input.style.border = "2px solid red";
+        input.style.border = "1px solid red";
         input.setAttribute("placeholder","Channel name is required.");
 
     }else{
