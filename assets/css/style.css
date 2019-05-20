@@ -1,7 +1,7 @@
 body{
     background: rgb(41,41,45);
     height: 100vh;
-    background: linear-gradient(120deg, rgba(41,41,45,1) 0%, rgba(63,63,82,1) 35%, rgba(125,136,138,1) 100%);
+    background-color: rgb(63,63,82);
     font-family: 'Maven Pro', Arial, sans-serif;
 }
 
@@ -47,7 +47,7 @@ main{
 
 main section.search{
     padding: 2rem;
-    grid-row: 2/3;
+    grid-row: 1/2;
     border-radius: 30px;
 }
 main section.search input[type="search"]{
@@ -56,6 +56,10 @@ main section.search input[type="search"]{
     border: none;
     border-radius: 7px;
     box-shadow: 1px 1px 3px rgb(0, 0, 0);
+}
+input:focus{
+    outline: none;
+    transform: scale(1.03);
 }
 
 /* Button style */
@@ -95,3 +99,39 @@ div.errorText{
 
 /* result section style */
 
+section.result {
+    grid-row: 2/3;
+    display: grid;
+    grid-template-rows: 1fr repeat(15,2fr);
+    grid-gap: 10px;
+
+}
+
+/* author info */
+div.author-info a{
+    color: rgb(4, 145, 4);
+    text-shadow: 1px 1px 2px rgb(0, 0, 0);
+    text-decoration: none;
+    font-size: 1.4em;
+}
+div.author-info a:hover{
+    color: rgb(0, 210, 0);
+}
+
+/* entry info */
+
+div.entry-info {
+     margin: 0.5rem 0;
+}
+
+div.entry-info h2{
+    color: rgb(255,255,255);
+    text-shadow: 2px 2px 2px rgb(0, 0, 0);
+    font-size: 0.9em;
+}
+
+/* Date class */
+
+.date{
+    color: rgb(255,255,255);
+}
