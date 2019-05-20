@@ -47,7 +47,8 @@ main{
 
 main section.search{
     padding: 2rem;
-    grid-row: 2/3;
+    grid-row: 1/2;
+    justify-self: start; /* temp */
     border-radius: 30px;
 }
 main section.search input[type="search"]{
@@ -56,6 +57,10 @@ main section.search input[type="search"]{
     border: none;
     border-radius: 7px;
     box-shadow: 1px 1px 3px rgb(0, 0, 0);
+}
+input:focus{
+    outline: none;
+    transform: scale(1.03);
 }
 
 /* Button style */
@@ -95,3 +100,42 @@ div.errorText{
 
 /* result section style */
 
+section.result {
+    grid-row: 2/3;
+    display: grid;
+    grid-template-rows: 1fr 2fr;
+    grid-template-columns: repeat(15, 1fr);
+    grid-gap: 10px;
+}
+
+/* author info */
+div.author-info{
+    grid-row: 1/2;
+}
+div.author-info a{
+    color: rgb(4, 145, 4);
+    text-shadow: 1px 1px 2px rgb(0, 0, 0);
+    text-decoration: none;
+    font-size: 1.4em;
+}
+div.author-info a:hover{
+    color: rgb(0, 210, 0);
+}
+
+/* entry info */
+
+div.entry-info {
+    grid-row: 2/3;  
+}
+
+div.entry-info h2{
+    color: rgb(255,255,255);
+    text-shadow: 2px 2px 2px rgb(0, 0, 0);
+    font-size: 0.9em;
+}
+
+/* Date class */
+
+.date{
+    color: rgb(255,255,255);
+}
