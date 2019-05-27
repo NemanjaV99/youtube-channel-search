@@ -10,15 +10,18 @@
     </head> 
     <body>
       <div id="wrapper">
+        
         <section class="head-container">
             <h1>Find your favourite YouTube channel</h1>
         </section>
 
+        <section class="search">
+          <input type="search" name="search-info" placeholder="Youtube channel name" id="search-input">
+          <button class="search-btn" onclick="userInput()"><i class="fas fa-play"></i></button>
+        </section>
+
         <main>
-            <section class="search">
-              <input type="search" name="search-info" placeholder="Youtube channel name" id="search-input">
-              <button class="search-btn" onclick="userInput()"><i class="fas fa-play"></i></button>
-            </section>
+            <!-- Videos will be displayed here -->
         </main>
 
       </div><!-- end wrapper -->
