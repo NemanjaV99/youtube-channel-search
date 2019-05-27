@@ -132,8 +132,8 @@ function author(channel){
     // create the div for displaying author info
     let authorInfo = document.createElement("div");
     authorInfo.setAttribute("class","author-info");
-    authorInfo.innerHTML = "<div class='author-name'><a href="+ channelUri +">"+ authorName +"</a></div>";
-    authorInfo.innerHTML += "<div class='date'>"+ yearJoined +"</div>";
+    authorInfo.innerHTML = "<div class='author-name'><a href="+ channelUri +">"+"<i class='fas fa-user'></i> "+ authorName +"</a></div>";
+    authorInfo.innerHTML += "<div class='date'>"+"<i class='far fa-clock'></i>"+ " Year joined: " + yearJoined +"</div>";
 
     // append it to the result section
     document.getElementsByClassName("result")[0].appendChild(authorInfo);
@@ -143,6 +143,7 @@ function entry(channel){
 
     // define the entry
     let video = channel.entry
+    console.log(video);
 
     for(i = 0; i < video.length; i++)
     {
@@ -154,32 +155,24 @@ function entry(channel){
         let videoID = video[i].id;
         videoID = videoID.split(":");
         videoID = videoID[2];
-
-        // get the video title and add it to the entryInfo section
-        let videoTitle = video[i].title;
-        entryInfo.innerHTML += "<h2 class='video-title'>"+ videoTitle +"</h2>";
-
-        // get the publish date
-        let videoPublished = video[i].published;
-        videoPublished = videoPublished.split("-");
-
-        // get the year and add it to the entryInfo section
-        let yearPublished = videoPublished[0];
-        entryInfo.innerHTML += "<div class='date'>"+ yearPublished +"</div>";
     
-
         // embed the video
         let iframe = document.createElement("iframe");
         iframe.setAttribute("class","video-window");
         
         // video link
-        let videoLink = "https://www.youtube.com/embed/" + videoID;
+        let embedVideo = "https://www.youtube.com/embed/" + videoID;
         
         // add video link to iframe
-        iframe.setAttribute("src",videoLink);
+        iframe.setAttribute("src",embedVideo);
         
         // append the iframe to entryInfo
         entryInfo.appendChild(iframe);
+
+        // get the video title, wrap it with anchor tag and add it to the entryInfo section
+        let videoLink = "https://www.youtube.com/watch?v=" + videoID;
+        let videoTitle = video[i].title;
+        entryInfo.innerHTML += "<h2 class='video-title'><a href="+ videoLink +" target='_blank'>"+ videoTitle +"</a></h2>";
 
         // append the entryInfo to the result section
         document.getElementsByClassName("result")[0].appendChild(entryInfo);
