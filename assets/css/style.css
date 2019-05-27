@@ -1,8 +1,13 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
 body{
-    background: rgb(41,41,45);
-    height: 100vh;
-    background: linear-gradient(120deg, rgba(41,41,45,1) 0%, rgba(63,63,82,1) 35%, rgba(125,136,138,1) 100%);
+    background: rgb(60, 60, 60);
     font-family: 'Maven Pro', Arial, sans-serif;
+    box-sizing: border-box;
 }
 
 /* wrapper */
@@ -15,7 +20,8 @@ body{
    grid-template-rows: repeat(3, 2fr);
    grid-template-areas: 
    ". h-container h-container ."
-   ". main main ."
+   ". search search ."
+   "main main main main"
    ". . . .";
 }
 
@@ -37,7 +43,6 @@ section.head-container h1{
 
 main{
     grid-area: main;
-    width: 40rem;
     height: 10rem;
     display: grid;
     grid-template-rows: 1fr 2fr 1fr;
@@ -45,13 +50,13 @@ main{
     justify-items: center;
 }
 
-main section.search{
+section.search{
     padding: 2rem;
     grid-row: 1/2;
-    justify-self: start; /* temp */
+    grid-area: search;
     border-radius: 30px;
 }
-main section.search input[type="search"]{
+section.search input[type="search"]{
     padding: 0.5rem;
     width: 25rem;
     border: none;
@@ -65,7 +70,7 @@ input:focus{
 
 /* Button style */
 
-main section.search button.search-btn{
+section.search button.search-btn{
     display: block;
     margin: 20px auto 0;
     padding: 10px 25px;
@@ -102,15 +107,22 @@ div.errorText{
 
 section.result {
     grid-row: 2/3;
+    justify-self: end;
     display: grid;
     grid-template-rows: 1fr 2fr;
-    grid-template-columns: repeat(15, 1fr);
-    grid-gap: 10px;
+    column-gap: 10px;
+    margin: 50px;
+    padding: 80px;
+    border-radius: 30px;
+    box-shadow: 3px 3px 5px rgb(0, 0, 0);
+    background-color: rgba(22, 22, 22, 0.200);
 }
 
 /* author info */
 div.author-info{
     grid-row: 1/2;
+    grid-column: 2/3;
+    justify-self: center;
 }
 div.author-info a{
     color: rgb(4, 145, 4);
@@ -125,13 +137,16 @@ div.author-info a:hover{
 /* entry info */
 
 div.entry-info {
-    grid-row: 2/3;  
+    grid-row: 2/3; 
+    display: none; 
+    width: 300px;
 }
 
 div.entry-info h2{
     color: rgb(255,255,255);
     text-shadow: 2px 2px 2px rgb(0, 0, 0);
-    font-size: 0.9em;
+    font-size: 1rem;
+    order: 3;
 }
 
 /* Date class */
