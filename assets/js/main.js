@@ -145,6 +145,9 @@ function entry(channel){
     let video = channel.entry
     console.log(video);
 
+    // add the left arrow for slider
+    document.getElementsByClassName("result")[0].innerHTML += "<i class='fas fa-arrow-alt-circle-left fa-3x'></i>";
+
     for(i = 0; i < video.length; i++)
     {
         // create div to display video/entry
@@ -178,4 +181,40 @@ function entry(channel){
         document.getElementsByClassName("result")[0].appendChild(entryInfo);
         
     }
+
+    // add the right arrow for slider
+    document.getElementsByClassName("result")[0].innerHTML += "<i class='fas fa-arrow-alt-circle-right fa-3x'></i>";
+
+    // call the slider function for the first time
+    slider();
+}
+
+
+/* Slider function */
+
+function slider(slide){
+
+	let elements = document.getElementsByClassName("entry-info");
+	//console.log(elements)
+	
+	let elementCount = 0;
+	
+	switch (slide) {
+		
+		case "+":
+			elementCount+=3;
+			break;
+		case "-":
+			elementCount-=3;
+			break;
+	}
+	
+	for (i = 0 ; i < 3 ; i++) {
+        
+        console.log(elements[elementCount]);
+        elements[elementCount].style.display = "block";
+        
+        elementCount++;
+	}
+
 }
