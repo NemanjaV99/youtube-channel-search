@@ -111,7 +111,7 @@ section.result {
     display: grid;
     grid-template-rows: 1fr 2fr;
     grid-template-columns: 1fr 2fr 2fr 2fr 1fr;
-    column-gap: 10px;
+    column-gap: 30px;
     margin: 50px;
     padding: 80px;
     border-radius: 30px;
@@ -165,7 +165,6 @@ div.author-info a{
 
 div.entry-info {
     grid-row: 2/3; 
-    display: none; 
     width: 300px;
 }
 
@@ -176,5 +175,6 @@ div.entry-info h2{
 /* Date class */
 
 .date{
+    margin-top: 10px;
     color: rgb(255,255,255);
 }

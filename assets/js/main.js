@@ -142,11 +142,11 @@ function author(channel){
 function entry(channel){
 
     // define the entry
-    let video = channel.entry
-    console.log(video);
+    let video = channel.entry;
 
     // add the left arrow for slider
     document.getElementsByClassName("result")[0].innerHTML += "<i class='fas fa-arrow-alt-circle-left fa-3x'></i>";
+    document.getElementsByClassName("fa-arrow-alt-circle-left")[0].setAttribute("onclick","slider('-')");
 
     for(i = 0; i < video.length; i++)
     {
@@ -184,6 +184,7 @@ function entry(channel){
 
     // add the right arrow for slider
     document.getElementsByClassName("result")[0].innerHTML += "<i class='fas fa-arrow-alt-circle-right fa-3x'></i>";
+    document.getElementsByClassName("fa-arrow-alt-circle-right")[0].setAttribute("onclick","slider('+')");
 
     // call the slider function for the first time
     slider();
@@ -195,10 +196,14 @@ function entry(channel){
 function slider(slide){
 
 	let elements = document.getElementsByClassName("entry-info");
-	//console.log(elements)
-	
-	let elementCount = 0;
-	
+
+    // first, reset all the videos display to none, every time this function is called
+    for (i = 0; i < elements.length; i++) {
+
+        elements[i].style.display = "none";
+    }
+
+
 	switch (slide) {
 		
 		case "+":
@@ -206,15 +211,38 @@ function slider(slide){
 			break;
 		case "-":
 			elementCount-=3;
-			break;
-	}
-	
+            break;
+        default:
+            elementCount = 0;
+    }
+    
+    // get the arrows
+    let leftArrow = document.getElementsByClassName("fa-arrow-alt-circle-left")[0];
+    let rightArrow = document.getElementsByClassName("fa-arrow-alt-circle-right")[0];
+
+    // reset the visibility of arrows
+    leftArrow.style.visibility = "visible";
+    rightArrow.style.visibility = "visible";
+
+    // see what is the elementCount value, and based upon that decide to display or not to display the arrows
+    if (elementCount < 3) {
+
+        leftArrow.style.visibility = "hidden";
+
+    } else if (elementCount >= elements.length - 3 ) {
+
+        rightArrow.style.visibility = "hidden";
+    }
+    
+    // display elements, 3 at a time
 	for (i = 0 ; i < 3 ; i++) {
-        
-        console.log(elements[elementCount]);
+          
         elements[elementCount].style.display = "block";
         
         elementCount++;
-	}
+    }
+    
+    // return to the previous value of element count
+    elementCount-=3;
 
 }
